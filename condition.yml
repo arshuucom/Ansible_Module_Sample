@@ -1,0 +1,12 @@
+---
+- hosts: Arshad01
+  user: Ansible
+  become: yes
+  connection: ssh
+  tasks:
+        - name: Install apache server on debain family
+          command: apt-get -y install apache2
+          when: ansible_os_family == "Debain"
+        - name: install apache server for redhat family
+          command: yum -y install httpd
+          when: ansible_os_family == "RedHat"
